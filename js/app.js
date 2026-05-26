@@ -1841,6 +1841,8 @@ function renderTimeline() {
     // Apply tag/time filter
     if (state.timelineFilter === 'production') {
         filteredTimeline = filteredTimeline.filter(item => item.production === true || item.tag === 'production');
+    } else if (state.timelineFilter === 'runner') {
+        filteredTimeline = filteredTimeline.filter(item => item.runner === true);
     } else if (state.timelineFilter === 'andi') {
         filteredTimeline = filteredTimeline.filter(item => item.andi === true);
     } else if (state.timelineFilter === 'pedro') {
@@ -1866,7 +1868,7 @@ function renderTimeline() {
         'Sunday': 'April 26, 2026'
     };
 
-    const filterLabels = { 'all': '', 'production': ' — Production', 'run-of-show': ' — Run of Show', 'screencue': ' — Screen Cue', 'andi': ' — Andi', 'pedro': ' — Pedro' };
+    const filterLabels = { 'all': '', 'production': ' — Production', 'runner': ' — Runner Tasks', 'run-of-show': ' — Run of Show', 'screencue': ' — Screen Cue', 'andi': ' — Andi', 'pedro': ' — Pedro' };
     if (dayTitle) {
         dayTitle.textContent = `${state.currentDay} Timeline${filterLabels[state.timelineFilter] || ''}`;
     }
@@ -1884,6 +1886,7 @@ function renderTimeline() {
                 <td class="prod-col"></td>
                 <td class="andi-col"></td>
                 <td class="pedro-col"></td>
+                <td class="runner-col"></td>
                 <td class="responsible-col" data-field="responsible" onclick="editTimelineCell(this)"><span class="phantom-placeholder">+ responsible</span></td>
                 <td class="staff-col" data-field="staff" onclick="editTimelineCell(this)"><span class="phantom-placeholder">+ staff</span></td>
                 <td class="screencue-col" data-field="screenCue" onclick="editTimelineCell(this)"><span class="phantom-placeholder">#</span></td>
@@ -1928,6 +1931,7 @@ function renderTimeline() {
                 <td class="prod-col"><input type="checkbox" class="tl-checkbox" ${item.production === true || item.tag === 'production' ? 'checked' : ''} onchange="toggleTimelineField('${item.id}', 'production', this.checked)"></td>
                 <td class="andi-col"><input type="checkbox" class="tl-checkbox" ${item.andi === true ? 'checked' : ''} onchange="toggleTimelineField('${item.id}', 'andi', this.checked)"></td>
                 <td class="pedro-col"><input type="checkbox" class="tl-checkbox" ${item.pedro === true ? 'checked' : ''} onchange="toggleTimelineField('${item.id}', 'pedro', this.checked)"></td>
+                <td class="runner-col"><input type="checkbox" class="tl-checkbox" ${item.runner === true ? 'checked' : ''} onchange="toggleTimelineField('${item.id}', 'runner', this.checked)"></td>
                 <td class="responsible-col" data-field="responsible" data-original="${escapeHtml(item.responsible || '')}" onclick="editTimelineCell(this)">${escapeHtml(item.responsible || '')}</td>
                 <td class="staff-col" data-field="staff" data-original="${escapeHtml(item.staff || '')}" onclick="editTimelineCell(this)">${escapeHtml(item.staff || '')}</td>
                 <td class="screencue-col" data-field="screenCue" data-original="${escapeHtml(item.screenCue || '')}" onclick="editTimelineCell(this)">${escapeHtml(item.screenCue || '')}</td>
@@ -1991,6 +1995,7 @@ function renderTimeline() {
             <td class="prod-col"></td>
             <td class="andi-col"></td>
             <td class="pedro-col"></td>
+            <td class="runner-col"></td>
             <td class="responsible-col" data-field="responsible" onclick="editTimelineCell(this)"><span class="phantom-placeholder">+ responsible</span></td>
             <td class="staff-col" data-field="staff" onclick="editTimelineCell(this)"><span class="phantom-placeholder">+ staff</span></td>
             <td class="screencue-col" data-field="screenCue" onclick="editTimelineCell(this)"><span class="phantom-placeholder">#</span></td>
@@ -2391,6 +2396,7 @@ function openTimelineModal(itemId = null) {
             'timeline-production': 'production',
             'timeline-andi': 'andi',
             'timeline-pedro': 'pedro',
+            'timeline-runner': 'runner',
             'timeline-notes': 'notes',
             'timeline-performer': 'performer',
             'timeline-stage-plot': 'stagePlotId'
@@ -2612,6 +2618,7 @@ async function handleTimelineSubmit(e) {
             'timeline-production': 'production',
             'timeline-andi': 'andi',
             'timeline-pedro': 'pedro',
+            'timeline-runner': 'runner',
             'timeline-notes': 'notes',
             'timeline-performer': 'performer',
             'timeline-stage-plot': 'stagePlotId'

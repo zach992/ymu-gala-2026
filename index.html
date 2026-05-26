@@ -400,6 +400,7 @@
                 <div class="timeline-filters">
                     <button class="filter-btn active" data-filter="all" onclick="setTimelineFilter('all')">All</button>
                     <button class="filter-btn" data-filter="production" onclick="setTimelineFilter('production')">Production</button>
+                    <button class="filter-btn" data-filter="runner" onclick="setTimelineFilter('runner')">Runner Tasks</button>
                     <button class="filter-btn" data-filter="run-of-show" onclick="setTimelineFilter('run-of-show')">Run of Show</button>
                     <button class="filter-btn" data-filter="screencue" onclick="setTimelineFilter('screencue')">Screen Cue</button>
                     <button class="filter-btn" data-filter="andi" onclick="setTimelineFilter('andi')">Andi</button>
@@ -417,6 +418,7 @@
                         <label class="col-toggle"><input type="checkbox" checked onchange="toggleTimelineCol('prod', this.checked)"> Prod</label>
                         <label class="col-toggle"><input type="checkbox" checked onchange="toggleTimelineCol('andi', this.checked)"> Andi</label>
                         <label class="col-toggle"><input type="checkbox" checked onchange="toggleTimelineCol('pedro', this.checked)"> Pedro</label>
+                        <label class="col-toggle"><input type="checkbox" checked onchange="toggleTimelineCol('runner', this.checked)"> Runner</label>
                         <label class="col-toggle"><input type="checkbox" checked onchange="toggleTimelineCol('responsible', this.checked)"> Responsible</label>
                         <label class="col-toggle"><input type="checkbox" checked onchange="toggleTimelineCol('staff', this.checked)"> Staff</label>
                         <label class="col-toggle"><input type="checkbox" checked onchange="toggleTimelineCol('screencue', this.checked)"> Screen Cue</label>
@@ -445,6 +447,7 @@
                                 <th class="prod-col">Prod</th>
                                 <th class="andi-col">Andi</th>
                                 <th class="pedro-col">Pedro</th>
+                                <th class="runner-col">Runner</th>
                                 <th class="responsible-col">Responsible</th>
                                 <th class="staff-col">Staff</th>
                                 <th class="screencue-col">Screen Cue #</th>
@@ -455,7 +458,7 @@
                         </thead>
                         <tbody id="timeline-tbody">
                             <tr>
-                                <td colspan="13" class="empty-state">No tasks for this day</td>
+                                <td colspan="14" class="empty-state">No tasks for this day</td>
                             </tr>
                         </tbody>
                     </table>
@@ -472,6 +475,7 @@
                 <span><kbd>N</kbd> new row</span>
                 <span><kbd>Ctrl</kbd>+<kbd>Z</kbd> undo</span>
             </div>
+
         </div>
 
         <!-- Technical Cue Sheet Page -->
@@ -2194,6 +2198,7 @@
                             <label class="checkbox-label"><input type="checkbox" id="timeline-production"> Production</label>
                             <label class="checkbox-label"><input type="checkbox" id="timeline-andi"> Andi</label>
                             <label class="checkbox-label"><input type="checkbox" id="timeline-pedro"> Pedro</label>
+                            <label class="checkbox-label"><input type="checkbox" id="timeline-runner"> Runner Task</label>
                         </div>
                         <div class="form-group">
                             <label for="timeline-notes">Notes</label>

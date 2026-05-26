@@ -1901,6 +1901,7 @@ body {
 .timeline-table.hide-prod .prod-col { display: none; }
 .timeline-table.hide-andi .andi-col { display: none; }
 .timeline-table.hide-pedro .pedro-col { display: none; }
+.timeline-table.hide-runner .runner-col { display: none; }
 .timeline-table.hide-responsible .responsible-col { display: none; }
 .timeline-table.hide-staff .staff-col { display: none; }
 .timeline-table.hide-screencue .screencue-col { display: none; }
@@ -1933,7 +1934,8 @@ body {
 /* Prod & Andi checkbox columns */
 .prod-col,
 .andi-col,
-.pedro-col {
+.pedro-col,
+.runner-col {
     width: 50px;
     text-align: center;
 }
@@ -2491,6 +2493,7 @@ body.printing-timeline .timeline-table .checkbox-col,
 body.printing-timeline .timeline-table .prod-col,
 body.printing-timeline .timeline-table .andi-col,
 body.printing-timeline .timeline-table .pedro-col,
+body.printing-timeline .timeline-table .runner-col,
 body.printing-timeline .timeline-table .setlist-col,
 body.printing-timeline .timeline-table .stageplot-col,
 body.printing-timeline .timeline-table .actions-col {
